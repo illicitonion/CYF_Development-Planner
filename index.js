@@ -4,6 +4,7 @@ const cors = require("cors");
 const path = require("path");
 const authorize = require("./middleware/authorize");
 const PORT = process.env.PORT || 5000;
+const pool = require("./db");
 
 app.use(cors());
 app.use(express.json());

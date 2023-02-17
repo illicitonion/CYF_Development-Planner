@@ -59,10 +59,10 @@ function Login({ setAuth }) {
             value={password}
             onChange={(e) => handleChange(e)}
           />
-          <div className="login-signin-buttons">
+          <div className="buttons">
             <button>Login</button>
           </div>
-          <Link to="/register" className="signin-login-link">
+          <Link to="/register" className="form-link">
             Sign Up
           </Link>
         </form>

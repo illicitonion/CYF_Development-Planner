@@ -14,23 +14,23 @@ CREATE TABLE users(
     PRIMARY KEY (user_id)
 );
 
-
---feedbacks
-CREATE TABLE feedbacks (
-  feedback_id SERIAL,
+--drafts
+CREATE TABLE drafts (
+  draft_id SERIAL,
   user_id UUID,
-  feedback_text VARCHAR(1000) NOT NULL,
-  PRIMARY KEY (feedback_id),
+  draft_title VARCHAR(100),
+  draft_text VARCHAR(1000),
+  PRIMARY KEY (draft_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-
---messages
-CREATE TABLE messages(
-      message_id SERIAL,
-      user_id UUID,
-      message_text VARCHAR(1000) NOT NULL,
-      PRIMARY KEY (message_id),
-      FOREIGN KEY (user_id) REFERENCES users(user_id)
+CREATE TABLE sent (
+  sent_id SERIAL,
+  sender_id UUID,
+  receipient_id UUID,
+  saved_draft_id SERIAL,
+  PRIMARY KEY (sent_id),
+  FOREIGN KEY (sender_id) REFERENCES users(user_id),
+  FOREIGN KEY (receipient_id) REFERENCES users(user_id),
+  FOREIGN KEY (saved_draft_id) REFERENCES drafts(draft_id)
 );
-

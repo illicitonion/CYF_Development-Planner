@@ -1,3 +1,4 @@
+//styles
 import "./styles/general.css";
 import "./styles/navbar.css";
 import "./styles/buttons.css";
@@ -12,15 +13,12 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./components/login-and-register/Login";
 import Register from "./components/login-and-register/Register";
-import Dashboard from "./components/dashboard/Dashboard";
+import DraftFiles from "./components/DraftFiles";
+
 import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home";
-import NoMatch from "./components/NoMatch";
-
-import ListFeedbacks from "./components/dashboard/mentor/ListFeedbacks";
-import ListMessages from "./components/dashboard/mentor/ListMessages";
-import NewMessage from "./components/dashboard/mentor/NewMessage";
-import NewFeedback from "./components/dashboard/mentor/NewFeedback";
+import Messages from "./components/Messages";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -63,7 +61,7 @@ function App() {
             !isAuthenticated ? (
               <Register setAuth={setAuth} />
             ) : (
-              <Navigate to="/login" />
+              <Navigate to="/dashboard" />
             )
           }
         />
@@ -78,6 +76,7 @@ function App() {
             )
           }
         />
+
         <Route
           exact
           path="dashboard"
@@ -89,31 +88,13 @@ function App() {
             )
           }
         />
+
         <Route
-          path="list-messages"
+          exact
+          path="messages"
           element={
             isAuthenticated ? (
-              <ListMessages setAuth={setAuth} />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="list-feedbacks"
-          element={
-            isAuthenticated ? (
-              <ListFeedbacks setAuth={setAuth} />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="new-message"
-          element={
-            isAuthenticated ? (
-              <NewMessage setAuth={setAuth} />
+              <Messages setAuth={setAuth} />
             ) : (
               <Navigate to="/login" />
             )
@@ -121,17 +102,28 @@ function App() {
         />
 
         <Route
-          path="new-feedback"
+          exact
+          path="draft-files"
           element={
             isAuthenticated ? (
-              <NewFeedback setAuth={setAuth} />
+              <DraftFiles setAuth={setAuth} />
             ) : (
               <Navigate to="/login" />
             )
           }
         />
 
-        <Route path="*" element={<NoMatch />} />
+        <Route
+          exact
+          path="messages"
+          element={
+            isAuthenticated ? (
+              <DraftFiles setAuth={setAuth} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
       </Routes>
     </>
   );

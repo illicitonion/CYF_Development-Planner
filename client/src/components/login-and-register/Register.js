@@ -11,25 +11,15 @@ function Register({ setAuth }) {
     role: "",
   });
 
-  const [role, setRole] = useState("student"); // DEFAULT VALUE
-
-  const { fname, lname, username, email, password } = inputs;
+  const { fname, lname, username, email, password, role } = inputs;
 
   const handleChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
-  // Handle radio buttons separately
-  const onRoleChange = (e) => {
-    setRole(e.target.value);
-  };
-
   const onSubmitForm = async (e) => {
     e.preventDefault();
 
-    /* Need to ensure that the email value is case-insensitive
-   So it is converted to lowercase
-*/
     try {
       const lowerEmail = email.toLowerCase();
       const body = {
@@ -119,8 +109,7 @@ function Register({ setAuth }) {
                 type="radio"
                 name="role"
                 value="student"
-                onChange={(e) => onRoleChange(e)}
-                checked={role === "student"}
+                onChange={(e) => handleChange(e)}
               />
             </label>
 
@@ -131,8 +120,7 @@ function Register({ setAuth }) {
                 type="radio"
                 name="role"
                 value="mentor"
-                onChange={(e) => onRoleChange(e)}
-                checked={role === "mentor"}
+                onChange={(e) => handleChange(e)}
               ></input>
             </label>
           </fieldset>

@@ -12,10 +12,7 @@ function Name() {
 
       const parseRes = await res.json();
 
-      // console.log(parseRes);
-
-      // setName(parseRes.username);
-
+      console.log(parseRes);
       setName(parseRes.username);
     } catch (err) {
       console.error(err.message);
@@ -25,12 +22,9 @@ function Name() {
   useEffect(() => {
     getName();
   }, []);
-
   return (
     <>
-      <section>
-        <h1 className="heading db-heading">{name}</h1>
-      </section>
+      <h1 className="heading">Dashboard {name}</h1>
     </>
   );
 }

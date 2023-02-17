@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
       "SELECT username FROM users WHERE user_id = $1",
       [req.user.id]
     );
-
+    console.log(user);
     res.json(user.rows[0]);
   } catch (err) {
     console.error(err.message);
@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.use("/feedbacks", require("./feedbacks"));
+router.use("/drafts", require("./drafts"));
 router.use("/messages", require("./messages"));
 
 module.exports = router;

@@ -13,6 +13,10 @@
 }
 
 @media only screen and (min-width: 864px) {
+
+    .flex {
+        display: flex;
+    }
     .header-flex {
         display: flex;
         flex-direction: row-reverse;

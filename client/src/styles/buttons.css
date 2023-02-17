@@ -11,9 +11,10 @@
    button {
        padding: 15px 25px;
        background-color: rgb(219, 104, 104);
+       margin: 20px auto;
        border: none;
        border-radius: 7px;   
-       width: 110px;
+       width: 100px;
        text-decoration: none;
        color: rgb(251, 249, 249);    
        font-weight: 700;

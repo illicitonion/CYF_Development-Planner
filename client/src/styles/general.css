@@ -46,10 +46,11 @@ fieldset {
 
 section {
     padding: 30px;
-    margin: 30px;
+    margin: 30px auto;
     border: 1px dotted black;
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+    max-width: 500px;
 }
 
 .header-img {
